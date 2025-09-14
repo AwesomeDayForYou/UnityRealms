@@ -19,20 +19,16 @@
 </head>
 <body class="bg-gray-900 text-gray-100">
 
-  <!-- Navbar -->
+<!-- Navbar -->
 <header class="bg-gray-800 border-b-4 border-emerald-500 shadow-lg fixed w-full z-50">
   <div class="container mx-auto flex items-center justify-between p-4">
     <div class="flex items-center space-x-3">
-      <!-- Navbar Logo -->
-<div class="w-12 h-12 pixel-border rounded flex items-center justify-center overflow-hidden">
-  <img src="https://pbs.twimg.com/media/G0zq30jb0AIdBA1?format=png&name=240x240" 
-       alt="Unity Realms Logo" class="w-full h-full object-cover">
-</div>
-
+      <div class="w-12 h-12 pixel-border rounded flex items-center justify-center overflow-hidden">
+        <img src="https://pbs.twimg.com/media/G0zq30jb0AIdBA1?format=png&name=240x240" 
+             alt="Unity Realms Logo" class="w-full h-full object-cover">
+      </div>
       <h1 class="text-3xl font-bold text-emerald-400">Unity Realms</h1>
     </div>
-
-    <!-- ปุ่มเมนู -->
     <button id="menuBtn" class="text-2xl font-bold">☰</button>
   </div>
 </header>
@@ -51,37 +47,13 @@
   </nav>
 </div>
 
-<!-- Script -->
-<script>
-  const menuBtn = document.getElementById("menuBtn");
-  const sideMenu = document.getElementById("sideMenu");
-  const closeBtn = document.getElementById("closeBtn");
+<!-- Hero Section -->
+<section class="relative bg-gradient-to-r from-emerald-600 to-green-700 py-20 text-center">
+  <h2 class="text-5xl font-extrabold mb-4 drop-shadow-lg">Welcome to Unity Realms</h2>
+  <p class="text-xl text-gray-200">🏰 ชุมชน Minecraft Infinity X Server</p>
+</section>
 
-  menuBtn.addEventListener("click", () => {
-    sideMenu.classList.remove("translate-x-full");
-  });
-
-  closeBtn.addEventListener("click", () => {
-    sideMenu.classList.add("translate-x-full");
-  });
-</script>
-
-    <!-- Mobile menu -->
-    <div id="mobileMenu" class="hidden flex flex-col bg-gray-700 p-4 space-y-3 md:hidden">
-      <a href="#about" class="hover:text-emerald-400">เกี่ยวกับ</a>
-      <a href="#leaders" class="hover:text-emerald-400">หัวหน้ากิลด์</a>
-      <a href="#members" class="hover:text-emerald-400">สมาชิก</a>
-      <a href="#contact" class="hover:text-emerald-400">ติดต่อ</a>
-    </div>
-  </header>
-
-  <!-- Hero Section -->
-  <section class="relative bg-gradient-to-r from-emerald-600 to-green-700 py-20 text-center">
-    <h2 class="text-5xl font-extrabold mb-4 drop-shadow-lg">Welcome to Unity Realms</h2>
-    <p class="text-xl text-gray-200">🏰 ชุมชน Minecraft Infinity X Server</p>
-  </section>
-
-  <!-- Server Status -->
+<!-- Server Status -->
 <section id="server-status" class="bg-gray-900 py-10 px-6">
   <div class="container mx-auto text-center">
     <h3 class="text-3xl font-bold mb-6 text-emerald-400">สถานะเซิร์ฟเวอร์</h3>
@@ -95,9 +67,8 @@
 
 <script>
   function updateServerStatus() {
-    const serverOnline = true; // เปลี่ยนเป็นตรวจสถานะจริงได้
-    const ping = Math.floor(Math.random() * 50) + 20; // ping จำลอง
-
+    const serverOnline = true;
+    const ping = Math.floor(Math.random() * 50) + 20;
     const statusEl = document.getElementById("serverStatus");
     const pingEl = document.getElementById("serverPing");
 
@@ -111,45 +82,88 @@
       pingEl.textContent = "--";
     }
   }
-
   updateServerStatus();
   setInterval(updateServerStatus, 5000);
 </script>
 
-  <!-- About -->
-  <section id="about" class="container mx-auto py-16 px-6">
-    <h3 class="text-3xl font-bold mb-6 text-emerald-400">เกี่ยวกับเรา</h3>
-    <p class="text-gray-300 leading-relaxed text-lg">
-      Unity Realms คือชุมชนกิลด์ใน Minecraft Infinity X  
-      ที่เต็มไปด้วยความสร้างสรรค์ ความสามัคคี และการผจญภัยแบบไม่สิ้นสุด 🌍  
-      ไม่ว่าคุณจะชอบสร้างบ้าน ตีบอส หรือออกสำรวจโลก เรามีที่ให้คุณเสมอ!
-    </p>
-  </section>
+<!-- About -->
+<section id="about" class="container mx-auto py-16 px-6">
+  <h3 class="text-3xl font-bold mb-6 text-emerald-400">เกี่ยวกับเรา</h3>
+  <p class="text-gray-300 leading-relaxed text-lg">
+    Unity Realms คือชุมชนกิลด์ใน Minecraft Infinity X  
+    ที่เต็มไปด้วยความสร้างสรรค์ ความสามัคคี และการผจญภัยแบบไม่สิ้นสุด 🌍  
+    ไม่ว่าคุณจะชอบสร้างบ้าน ตีบอส หรือออกสำรวจโลก เรามีที่ให้คุณเสมอ!
+  </p>
+</section>
 
-  <!-- Guild Activities -->
+<section id="events" class="bg-gray-900 py-16 px-6">
+  <div class="container mx-auto">
+    <h3 class="text-3xl font-bold mb-10 text-emerald-400 text-center">กิจกรรมกิลด์ล่วงหน้า</h3>
+    
+    <div class="relative border-l-4 border-emerald-500 ml-4">
+      <!-- Event 1 -->
+      <div class="mb-8 ml-6">
+        <span class="absolute -left-5 w-10 h-10 bg-emerald-500 rounded-full flex items-center justify-center text-white font-bold">1</span>
+        <h4 class="text-xl font-bold text-gray-200">PvP Tournament</h4>
+        <p class="text-gray-400 text-sm">วันที่: 18 กันยายน 2025 | เวลา: 20:00 น.</p>
+        <p class="text-gray-300">ต่อสู้ระหว่างสมาชิกเพื่อชิงรางวัลสุดพิเศษ</p>
+      </div>
+      
+      <!-- Event 2 -->
+      <div class="mb-8 ml-6">
+        <span class="absolute -left-5 w-10 h-10 bg-emerald-500 rounded-full flex items-center justify-center text-white font-bold">2</span>
+        <h4 class="text-xl font-bold text-gray-200">Build Contest</h4>
+        <p class="text-gray-400 text-sm">วันที่: 20 กันยายน 2025 | เวลา: 18:00 น.</p>
+        <p class="text-gray-300">แข่งขันสร้างอาคารและฐานที่สวยที่สุดในกิลด์</p>
+      </div>
+
+      <!-- Event 3 -->
+      <div class="mb-8 ml-6">
+        <span class="absolute -left-5 w-10 h-10 bg-emerald-500 rounded-full flex items-center justify-center text-white font-bold">3</span>
+        <h4 class="text-xl font-bold text-gray-200">Exploration Raid</h4>
+        <p class="text-gray-400 text-sm">วันที่: 22 กันยายน 2025 | เวลา: 21:00 น.</p>
+        <p class="text-gray-300">ออกสำรวจดันเจี้ยนและแผนที่ลับ พร้อมรับของรางวัล</p>
+      </div>
+
+      <!-- Event 4 -->
+      <div class="mb-8 ml-6">
+        <span class="absolute -left-5 w-10 h-10 bg-emerald-500 rounded-full flex items-center justify-center text-white font-bold">4</span>
+        <h4 class="text-xl font-bold text-gray-200">PARTY</h4>
+        <p class="text-gray-400 text-sm">วันที่: 24 กันยายน 2025 | เวลา: 21:00 น.</p>
+        <p class="text-gray-300">จัดปาร์ตี้คุยเล่น</p>
+
+        <!-- Event 5 -->
+      <div class="mb-8 ml-6">
+        <span class="absolute -left-5 w-10 h-10 bg-emerald-500 rounded-full flex items-center justify-center text-white font-bold">5</span>
+        <h4 class="text-xl font-bold text-gray-200">END</h4>
+        <p class="text-gray-400 text-sm">วันที่: 1 มกราคม 2099 | เวลา: 9:00 น.</p>
+        <p class="text-gray-300">เซิฟเวอร์ปิดให้บริการ</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- Guild Activities -->
 <section id="activities" class="bg-gray-900 py-16 px-6">
   <div class="container mx-auto text-center">
     <h3 class="text-3xl font-bold mb-10 text-emerald-400">กิจกรรมกิลด์</h3>
     <div class="grid md:grid-cols-4 gap-8">
-      <!-- Activity 1 -->
       <div class="bg-gray-800 pixel-border p-6 rounded-xl shadow-lg hover:scale-105 transform transition">
         <div class="text-4xl mb-4">🛡️</div>
         <h4 class="text-xl font-bold text-emerald-300 mb-2">PvP Battle</h4>
         <p class="text-gray-300 text-sm">ต่อสู้ระหว่างสมาชิกและท้าทายผู้เล่นอื่น</p>
       </div>
-      <!-- Activity 2 -->
       <div class="bg-gray-800 pixel-border p-6 rounded-xl shadow-lg hover:scale-105 transform transition">
         <div class="text-4xl mb-4">🏰</div>
         <h4 class="text-xl font-bold text-emerald-300 mb-2">สร้างเมือง</h4>
         <p class="text-gray-300 text-sm">ร่วมสร้างฐานและเมืองของกิลด์</p>
       </div>
-      <!-- Activity 3 -->
       <div class="bg-gray-800 pixel-border p-6 rounded-xl shadow-lg hover:scale-105 transform transition">
         <div class="text-4xl mb-4">🗺️</div>
         <h4 class="text-xl font-bold text-emerald-300 mb-2">สำรวจโลก</h4>
         <p class="text-gray-300 text-sm">ออกสำรวจดันเจี้ยนและแผนที่ใหม่</p>
       </div>
-      <!-- Activity 4 -->
       <div class="bg-gray-800 pixel-border p-6 rounded-xl shadow-lg hover:scale-105 transform transition">
         <div class="text-4xl mb-4">🧱</div>
         <h4 class="text-xl font-bold text-emerald-300 mb-2">กิจกรรมสร้างบ้าน</h4>
@@ -159,7 +173,7 @@
   </div>
 </section>
 
-  <!-- Achievements -->
+<!-- Achievements -->
 <section id="achievements" class="bg-gray-800 py-16 px-6">
   <div class="container mx-auto text-center">
     <h3 class="text-3xl font-bold mb-10 text-emerald-400">ความสำเร็จของกิลด์</h3>
@@ -183,37 +197,71 @@
   </div>
 </section>
 
-  <!-- Leaders Section -->
+<!-- Leaders Section -->
 <section id="leaders" class="bg-gray-800 py-16 px-6">
   <div class="container mx-auto">
     <h3 class="text-3xl font-bold mb-10 text-emerald-400 text-center">หัวหน้ากิลด์</h3>
     <div class="grid md:grid-cols-2 gap-10">
 
-      <!-- Leader 1: Koma Kungz -->
-      <div class="relative bg-gradient-to-br from-emerald-600 to-green-700 pixel-border p-6 rounded-xl shadow-2xl text-center 
-                  transform hover:scale-110 hover:rotate-1 transition duration-300">
-        <div class="absolute inset-0 border-4 border-emerald-400 rounded-xl animate-pulse"></div>
-        <div class="relative z-10">
-          <div class="w-28 h-28 bg-emerald-800 pixel-border mx-auto mb-4 shadow-lg overflow-hidden">
-            <img src="https://pbs.twimg.com/media/G0z1SSMaoAAsn-e?format=png&name=240x240" 
-                 alt="Koma Kungz" class="w-full h-full object-cover">
+      <!-- Leader 1 -->
+      <div class="relative group bg-gradient-to-br from-emerald-600 to-green-700 pixel-border p-6 rounded-xl shadow-2xl text-center transform hover:scale-110 hover:rotate-1 transition duration-300">
+        <div class="absolute top-2 right-2 text-xl">🛡️</div>
+        <div class="w-28 h-28 bg-emerald-800 pixel-border mx-auto mb-4 shadow-lg overflow-hidden">
+          <img src="https://pbs.twimg.com/media/G0z1SSMaoAAsn-e?format=png&name=240x240"
+               alt="Koma Kungz" class="w-full h-full object-cover">
+        </div>
+        <h4 class="text-2xl font-bold text-white drop-shadow-md">Koma Kungz</h4>
+        <p class="text-gray-200 font-semibold mb-3">หัวหน้ากิลด์</p>
+
+        <!-- Progress Bars -->
+        <div class="text-left mb-2">
+          <span class="text-gray-200 text-sm">Leadership</span>
+          <div class="w-full bg-gray-700 h-3 rounded-full mt-1">
+            <div class="bg-emerald-400 h-3 rounded-full" style="width: 90%;"></div>
           </div>
-          <h4 class="text-2xl font-bold text-white drop-shadow-md">Koma Kungz</h4>
-          <p class="text-gray-200 font-semibold">หัวหน้ากิลด์</p>
+        </div>
+        <div class="text-left mb-2">
+          <span class="text-gray-200 text-sm">PvP Wins</span>
+          <div class="w-full bg-gray-700 h-3 rounded-full mt-1">
+            <div class="bg-yellow-400 h-3 rounded-full" style="width: 70%;"></div>
+          </div>
+        </div>
+        <div class="text-left mb-2">
+          <span class="text-gray-200 text-sm">Buildings</span>
+          <div class="w-full bg-gray-700 h-3 rounded-full mt-1">
+            <div class="bg-blue-400 h-3 rounded-full" style="width: 50%;"></div>
+          </div>
         </div>
       </div>
 
-      <!-- Leader 2: Muffinwoof -->
-      <div class="relative bg-gradient-to-br from-emerald-600 to-green-700 pixel-border p-6 rounded-xl shadow-2xl text-center 
-                  transform hover:scale-110 hover:-rotate-1 transition duration-300">
-        <div class="absolute inset-0 border-4 border-emerald-400 rounded-xl animate-pulse"></div>
-        <div class="relative z-10">
-          <div class="w-28 h-28 bg-emerald-800 pixel-border mx-auto mb-4 shadow-lg overflow-hidden">
-            <img src="https://pbs.twimg.com/media/G0z1SRwbMAAAW8x?format=png&name=240x240" 
-                 alt="Muffinwoof" class="w-full h-full object-cover">
+      <!-- Leader 2 -->
+      <div class="relative group bg-gradient-to-br from-emerald-600 to-green-700 pixel-border p-6 rounded-xl shadow-2xl text-center transform hover:scale-110 hover:-rotate-1 transition duration-300">
+        <div class="absolute top-2 right-2 text-xl">🐾</div>
+        <div class="w-28 h-28 bg-emerald-800 pixel-border mx-auto mb-4 shadow-lg overflow-hidden">
+          <img src="https://pbs.twimg.com/media/G0z1SRwbMAAAW8x?format=png&name=240x240"
+               alt="Muffinwoof" class="w-full h-full object-cover">
+        </div>
+        <h4 class="text-2xl font-bold text-white drop-shadow-md">Muffinwoof</h4>
+        <p class="text-gray-200 font-semibold mb-3">หัวหน้ากิลด์ร่วม</p>
+
+        <!-- Progress Bars -->
+        <div class="text-left mb-2">
+          <span class="text-gray-200 text-sm">Leadership</span>
+          <div class="w-full bg-gray-700 h-3 rounded-full mt-1">
+            <div class="bg-emerald-400 h-3 rounded-full" style="width: 70%;"></div>
           </div>
-          <h4 class="text-2xl font-bold text-white drop-shadow-md">Muffinwoof</h4>
-          <p class="text-gray-200 font-semibold">หัวหน้ากิลด์ร่วม</p>
+        </div>
+        <div class="text-left mb-2">
+          <span class="text-gray-200 text-sm">PvP Wins</span>
+          <div class="w-full bg-gray-700 h-3 rounded-full mt-1">
+            <div class="bg-yellow-400 h-3 rounded-full" style="width: 0%;"></div>
+          </div>
+        </div>
+        <div class="text-left mb-2">
+          <span class="text-gray-200 text-sm">Buildings</span>
+          <div class="w-full bg-gray-700 h-3 rounded-full mt-1">
+            <div class="bg-blue-400 h-3 rounded-full" style="width: 40%;"></div>
+          </div>
         </div>
       </div>
 
@@ -222,54 +270,131 @@
 </section>
 
 
-
-
-  <!-- Members -->
+<!-- Members -->
 <section id="members" class="container mx-auto py-16 px-6">
   <h3 class="text-3xl font-bold mb-10 text-emerald-400 text-center">สมาชิกกิลด์</h3>
   <div class="grid md:grid-cols-2 gap-10">
-    
-    <!-- Member 1 -->
     <div class="bg-gray-700 pixel-border p-6 rounded-xl shadow-lg text-center hover:scale-105 transform transition">
       <div class="w-24 h-24 bg-emerald-600 pixel-border rounded mx-auto mb-4"></div>
       <h4 class="text-xl font-bold">NEWDAY</h4>
       <p class="text-gray-400">สมาชิกกิลด์</p>
     </div>
-    
-    <!-- Member 2 -->
     <div class="bg-gray-700 pixel-border p-6 rounded-xl shadow-lg text-center hover:scale-105 transform transition">
       <div class="w-24 h-24 bg-emerald-600 pixel-border rounded mx-auto mb-4"></div>
       <h4 class="text-xl font-bold">PUNCHlnwza</h4>
       <p class="text-gray-400">สมาชิกกิลด์</p>
     </div>
+  </div>
+</section>
+<section id="leaderboard" class="bg-gray-800 py-16 px-6">
+  <div class="container mx-auto text-center">
+    <h3 class="text-3xl font-bold mb-10 text-emerald-400">Leaderboard</h3>
+    
+    <div class="grid md:grid-cols-3 gap-8">
+      <!-- Player 1 -->
+      <div class="bg-gray-700 pixel-border p-6 rounded-xl shadow-lg hover:scale-105 transform transition">
+        <h4 class="text-xl font-bold text-white mb-2">Koma Kungz</h4>
+        <p class="text-gray-400 mb-4">Top Player</p>
 
+        <!-- Progress Bars -->
+        <div class="mb-2 text-left">
+          <p class="text-sm text-gray-300 mb-1">PvP Wins</p>
+          <div class="w-full bg-gray-600 rounded-full h-3">
+            <div class="bg-emerald-400 h-3 rounded-full" style="width: 90%"></div>
+          </div>
+        </div>
+        <div class="mb-2 text-left">
+          <p class="text-sm text-gray-300 mb-1">Buildings</p>
+          <div class="w-full bg-gray-600 rounded-full h-3">
+            <div class="bg-emerald-400 h-3 rounded-full" style="width: 80%"></div>
+          </div>
+        </div>
+        <div class="mb-2 text-left">
+          <p class="text-sm text-gray-300 mb-1">XP</p>
+          <div class="w-full bg-gray-600 rounded-full h-3">
+            <div class="bg-emerald-400 h-3 rounded-full" style="width: 95%"></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Player 2 -->
+      <div class="bg-gray-700 pixel-border p-6 rounded-xl shadow-lg hover:scale-105 transform transition">
+        <h4 class="text-xl font-bold text-white mb-2">Muffinwoof</h4>
+        <p class="text-gray-400 mb-4">Top Player</p>
+
+        <div class="mb-2 text-left">
+          <p class="text-sm text-gray-300 mb-1">PvP Wins</p>
+          <div class="w-full bg-gray-600 rounded-full h-3">
+            <div class="bg-emerald-400 h-3 rounded-full" style="width: 70%"></div>
+          </div>
+        </div>
+        <div class="mb-2 text-left">
+          <p class="text-sm text-gray-300 mb-1">Buildings</p>
+          <div class="w-full bg-gray-600 rounded-full h-3">
+            <div class="bg-emerald-400 h-3 rounded-full" style="width: 85%"></div>
+          </div>
+        </div>
+        <div class="mb-2 text-left">
+          <p class="text-sm text-gray-300 mb-1">XP</p>
+          <div class="w-full bg-gray-600 rounded-full h-3">
+            <div class="bg-emerald-400 h-3 rounded-full" style="width: 80%"></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Player 3 -->
+      <div class="bg-gray-700 pixel-border p-6 rounded-xl shadow-lg hover:scale-105 transform transition">
+        <h4 class="text-xl font-bold text-white mb-2">NEWDAY</h4>
+        <p class="text-gray-400 mb-4">Top Player</p>
+
+        <div class="mb-2 text-left">
+          <p class="text-sm text-gray-300 mb-1">PvP Wins</p>
+          <div class="w-full bg-gray-600 rounded-full h-3">
+            <div class="bg-emerald-400 h-3 rounded-full" style="width: 60%"></div>
+          </div>
+        </div>
+        <div class="mb-2 text-left">
+          <p class="text-sm text-gray-300 mb-1">Buildings</p>
+          <div class="w-full bg-gray-600 rounded-full h-3">
+            <div class="bg-emerald-400 h-3 rounded-full" style="width: 75%"></div>
+          </div>
+        </div>
+        <div class="mb-2 text-left">
+          <p class="text-sm text-gray-300 mb-1">XP</p>
+          <div class="w-full bg-gray-600 rounded-full h-3">
+            <div class="bg-emerald-400 h-3 rounded-full" style="width: 85%"></div>
+          </div>
+        </div>
+      </div>
+
+    </div>
   </div>
 </section>
 
 
-  <!-- Contact -->
-  <section id="contact" class="bg-gray-800 py-16 px-6">
-    <div class="container mx-auto text-center">
-      <h3 class="text-3xl font-bold mb-6 text-emerald-400">ติดต่อ</h3>
-      <p class="text-gray-300 mb-4">💬 หากสนใจเข้าร่วม Unity Realms ติดต่อเราได้ที่ Discord</p>
-      <a href="https://discord.gg/Ethrhx7P" class="bg-emerald-500 hover:bg-emerald-600 text-white px-8 py-3 rounded-xl font-bold shadow-lg pixel-border">
-        Join Discord
-      </a>
-    </div>
-  </section>
+<!-- Contact -->
+<section id="contact" class="bg-gray-800 py-16 px-6">
+  <div class="container mx-auto text-center">
+    <h3 class="text-3xl font-bold mb-6 text-emerald-400">ติดต่อ</h3>
+    <p class="text-gray-300 mb-4">💬 หากสนใจเข้าร่วม Unity Realms ติดต่อเราได้ที่ Discord</p>
+    <a href="https://discord.gg/Ethrhx7P" class="bg-emerald-500 hover:bg-emerald-600 text-white px-8 py-3 rounded-xl font-bold shadow-lg pixel-border">
+      Join Discord
+    </a>
+  </div>
+</section>
 
-  <!-- Footer with Motto -->
+<!-- Footer -->
 <footer class="bg-gray-900 py-6 text-center text-gray-500 text-sm border-t border-gray-700">
   Unity Realms – Together We Build, Together We Conquer
 </footer>
 
-  <!-- Script -->
-  <script>
-    const menuBtn = document.getElementById("menuBtn");
-    const mobileMenu = document.getElementById("mobileMenu");
-    menuBtn.addEventListener("click", () => {
-      mobileMenu.classList.toggle("hidden");
-    });
-  </script>
+<script>
+  const menuBtn = document.getElementById("menuBtn");
+  const sideMenu = document.getElementById("sideMenu");
+  const closeBtn = document.getElementById("closeBtn");
+  menuBtn.addEventListener("click", () => sideMenu.classList.remove("translate-x-full"));
+  closeBtn.addEventListener("click", () => sideMenu.classList.add("translate-x-full"));
+</script>
+
 </body>
 </html>

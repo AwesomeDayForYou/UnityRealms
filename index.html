@@ -70,38 +70,130 @@
   <p class="text-xl text-gray-200">🏰 ชุมชน Minecraft Infinity X Server</p>
 </section>
 
-<!-- Server Status -->
-<section id="server-status" class="bg-gray-900 py-10 px-6">
-  <div class="container mx-auto text-center">
-    <h3 class="text-3xl font-bold mb-6 text-emerald-400">สถานะเซิร์ฟเวอร์</h3>
-    <div class="inline-block bg-gray-800 pixel-border p-6 rounded-xl shadow-lg w-72 hover:scale-105 transform transition">
-      <h4 class="text-2xl font-bold text-white mb-2">Infinity X Server</h4>
-      <p class="text-gray-300 mb-2">สถานะ: <span id="serverStatus" class="font-bold">กำลังโหลด...</span></p>
-      <p class="text-gray-300">Ping: <span id="serverPing">--</span> ms</p>
+<!-- Server Status + Material Exchange Calculator -->
+<section id="server-exchange" class="bg-gray-900 py-16 px-6 relative z-10">
+  <div class="container mx-auto">
+    <h3 class="text-3xl font-bold mb-8 text-emerald-400 text-center">
+      สถานะเซิร์ฟเวอร์ & เครื่องคำนวณแลกเปลี่ยน
+    </h3>
+
+    <div class="grid md:grid-cols-2 gap-8">
+      
+      <!-- Server Status -->
+      <div class="bg-gray-800 pixel-border p-6 rounded-xl shadow-2xl relative overflow-hidden hover:scale-105 transform transition">
+        <h4 class="text-2xl font-bold text-white mb-4">Infinity X Server</h4>
+        <p class="text-gray-300 mb-2 text-lg">
+          สถานะ: <span id="serverStatus" class="font-bold text-xl">กำลังโหลด...</span>
+        </p>
+        <p class="text-gray-300 text-lg">
+          Ping: <span id="serverPing" class="font-bold">--</span> ms
+        </p>
+
+        <div class="mt-4 bg-gray-900 h-2 w-full rounded-full overflow-hidden shadow-inner">
+          <div id="statusBar" class="h-2 w-0 bg-green-400 transition-all duration-500"></div>
+        </div>
+      </div>
+
+      <!-- Material Exchange Calculator -->
+      <div class="bg-gray-800 pixel-border p-6 rounded-xl shadow-lg text-left">
+        <div class="mb-4">
+          <label class="block mb-2 font-bold text-gray-200">จำนวน:</label>
+          <input type="number" id="amountInput" class="w-full p-2 rounded bg-gray-700 text-white" placeholder="ใส่จำนวน">
+        </div>
+        
+        <div class="mb-4">
+          <label class="block mb-2 font-bold text-gray-200">จาก:</label>
+          <select id="fromSelect" class="w-full p-2 rounded bg-gray-700 text-white">
+            <option value="iron">Iron Ingot</option>
+            <option value="gold">Gold Ingot</option>
+            <option value="diamond">Diamond</option>
+            <option value="netherite">Netherite Ingot</option>
+          </select>
+        </div>
+        
+        <div class="mb-4">
+          <label class="block mb-2 font-bold text-gray-200">เป็น:</label>
+          <select id="toSelect" class="w-full p-2 rounded bg-gray-700 text-white">
+            <option value="iron">Iron Ingot</option>
+            <option value="gold">Gold Ingot</option>
+            <option value="diamond">Diamond</option>
+            <option value="netherite">Netherite Ingot</option>
+          </select>
+        </div>
+        
+        <button id="calcBtn" class="w-full bg-emerald-500 hover:bg-emerald-600 text-white font-bold py-2 rounded pixel-border">
+          คำนวณ
+        </button>
+        
+        <div class="mt-4 text-gray-200 font-bold" id="result">ผลลัพธ์: -</div>
+      </div>
+
     </div>
   </div>
 </section>
 
 <script>
+  // ======================
+  // Server Status
+  // ======================
   function updateServerStatus() {
-    const serverOnline = true;
-    const ping = Math.floor(Math.random() * 50) + 20;
+    const serverOnline = true; // เปลี่ยนเป็น true/false ตามสถานะจริงได้
+    const ping = Math.floor(Math.random() * 50) + 20; // ตัวอย่างค่า ping
     const statusEl = document.getElementById("serverStatus");
     const pingEl = document.getElementById("serverPing");
+    const statusBar = document.getElementById("statusBar");
 
-    if(serverOnline) {
+    if (serverOnline) {
       statusEl.textContent = "ออนไลน์";
-      statusEl.className = "font-bold text-green-400";
+      statusEl.className = "font-bold text-xl text-green-400";
       pingEl.textContent = ping;
+      statusBar.style.width = "100%";
+      statusBar.className = "h-2 w-full bg-green-400 transition-all duration-500";
     } else {
       statusEl.textContent = "ออฟไลน์";
-      statusEl.className = "font-bold text-red-500";
+      statusEl.className = "font-bold text-xl text-red-500";
       pingEl.textContent = "--";
+      statusBar.style.width = "100%";
+      statusBar.className = "h-2 w-full bg-red-500 transition-all duration-500";
     }
   }
-  updateServerStatus();
-  setInterval(updateServerStatus, 5000);
+
+  // อัปเดตทันทีเมื่อโหลด DOM และทุก 5 วินาที
+  document.addEventListener("DOMContentLoaded", () => {
+    updateServerStatus();
+    setInterval(updateServerStatus, 5000);
+  });
+
+  // ======================
+  // Material Exchange Calculator
+  // ======================
+  const exchangeRates = {
+    iron: { iron: 1, gold: 1, diamond: 1/64, netherite: 1/640 },
+    gold: { iron: 1, gold: 1, diamond: 1/64, netherite: 1/640 },
+    diamond: { iron: 64, gold: 64, diamond: 1, netherite: 1/10 },
+    netherite: { iron: 640, gold: 640, diamond: 10, netherite: 1 }
+  };
+
+  document.getElementById("calcBtn").addEventListener("click", () => {
+    const amount = parseFloat(document.getElementById("amountInput").value);
+    const from = document.getElementById("fromSelect").value;
+    const to = document.getElementById("toSelect").value;
+
+    if(isNaN(amount) || amount <= 0) {
+      document.getElementById("result").textContent = "กรุณาใส่จำนวนที่ถูกต้อง!";
+      return;
+    }
+
+    const rate = exchangeRates[from][to];
+    const result = amount * rate;
+
+    document.getElementById("result").textContent = `ผลลัพธ์: ${result} ${to.charAt(0).toUpperCase() + to.slice(1).replace('_', ' ')}`;
+  });
 </script>
+
+
+
+
 
 <!-- About -->
 <section id="about" class="container mx-auto py-16 px-6">

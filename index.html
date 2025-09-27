@@ -15,6 +15,22 @@
       image-rendering: pixelated;
       border: 4px solid #1a1a1a;
     }
+    body {
+  /* พื้นหลังแบบครอบคลุมทั้งจอ */
+  background-image: url('https://pbs.twimg.com/media/G10nsGnb0AUt1ha?format=jpg&name=small');
+  background-size: cover;
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-attachment: fixed; /* ถ้าอยากให้พื้นหลังนิ่งเมื่อ scroll */
+  font-family: 'Minecraft', sans-serif;
+}
+.bg-overlay {
+  position: absolute;
+  inset: 0;
+  background-color: rgba(0,0,0,0.6); /* ปรับค่า 0.6 ตามต้องการ */
+}
+
+
   </style>
 </head>
 <body class="bg-gray-900 text-gray-100">
@@ -29,7 +45,8 @@
       </div>
       <h1 class="text-3xl font-bold text-emerald-400">Unity Realms</h1>
     </div>
-    <button id="menuBtn" class="text-2xl font-bold">☰</button>
+    <button id="menuBtn" class="text-2xl font-bold px-3 py-1">☰</button>
+
   </div>
 </header>
 
@@ -68,7 +85,7 @@
 <script>
   function updateServerStatus() {
     const serverOnline = true;
-    const ping = Math.floor(Math.random() * 70) + 20;
+    const ping = Math.floor(Math.random() * 50) + 20;
     const statusEl = document.getElementById("serverStatus");
     const pingEl = document.getElementById("serverPing");
 
@@ -90,7 +107,7 @@
 <section id="about" class="container mx-auto py-16 px-6">
   <h3 class="text-3xl font-bold mb-6 text-emerald-400">เกี่ยวกับเรา</h3>
   <p class="text-gray-300 leading-relaxed text-lg">
-    Unity Realms คือชุมชนกิลด์ใน Minecraft Infinity X Server
+    Unity Realms คือชุมชนกิลด์ใน Minecraft Infinity X  
     ที่เต็มไปด้วยความสร้างสรรค์ ความสามัคคี และการผจญภัยแบบไม่สิ้นสุด 🌍  
     ไม่ว่าคุณจะชอบสร้างบ้าน ตีบอส หรือออกสำรวจโลก เรามีที่ให้คุณเสมอ!
   </p>
@@ -131,8 +148,9 @@
         <h4 class="text-xl font-bold text-gray-200">PARTY</h4>
         <p class="text-gray-400 text-sm">วันที่: 24 กันยายน 2025 | เวลา: 21:00 น.</p>
         <p class="text-gray-300">จัดปาร์ตี้คุยเล่น</p>
+      </div>
 
-        <!-- Event 5 -->
+      <!-- Event 5 -->
       <div class="mb-8 ml-6">
         <span class="absolute -left-5 w-10 h-10 bg-emerald-500 rounded-full flex items-center justify-center text-white font-bold">5</span>
         <h4 class="text-xl font-bold text-gray-200">END</h4>
@@ -300,7 +318,7 @@
         <div class="mb-2 text-left">
           <p class="text-sm text-gray-300 mb-1">PvP Wins</p>
           <div class="w-full bg-gray-600 rounded-full h-3">
-            <div class="bg-emerald-400 h-3 rounded-full" style="width: 100%"></div>
+            <div class="bg-emerald-400 h-3 rounded-full" style="width: 90%"></div>
           </div>
         </div>
         <div class="mb-2 text-left">
@@ -312,7 +330,7 @@
         <div class="mb-2 text-left">
           <p class="text-sm text-gray-300 mb-1">XP</p>
           <div class="w-full bg-gray-600 rounded-full h-3">
-            <div class="bg-emerald-400 h-3 rounded-full" style="width: 90%"></div>
+            <div class="bg-emerald-400 h-3 rounded-full" style="width: 95%"></div>
           </div>
         </div>
       </div>
@@ -325,19 +343,19 @@
         <div class="mb-2 text-left">
           <p class="text-sm text-gray-300 mb-1">PvP Wins</p>
           <div class="w-full bg-gray-600 rounded-full h-3">
-            <div class="bg-emerald-400 h-3 rounded-full" style="width: 20%"></div>
+            <div class="bg-emerald-400 h-3 rounded-full" style="width: 70%"></div>
           </div>
         </div>
         <div class="mb-2 text-left">
           <p class="text-sm text-gray-300 mb-1">Buildings</p>
           <div class="w-full bg-gray-600 rounded-full h-3">
-            <div class="bg-emerald-400 h-3 rounded-full" style="width: 100%"></div>
+            <div class="bg-emerald-400 h-3 rounded-full" style="width: 85%"></div>
           </div>
         </div>
         <div class="mb-2 text-left">
           <p class="text-sm text-gray-300 mb-1">XP</p>
           <div class="w-full bg-gray-600 rounded-full h-3">
-            <div class="bg-emerald-400 h-3 rounded-full" style="width: 65%"></div>
+            <div class="bg-emerald-400 h-3 rounded-full" style="width: 80%"></div>
           </div>
         </div>
       </div>
@@ -356,13 +374,13 @@
         <div class="mb-2 text-left">
           <p class="text-sm text-gray-300 mb-1">Buildings</p>
           <div class="w-full bg-gray-600 rounded-full h-3">
-            <div class="bg-emerald-400 h-3 rounded-full" style="width: 20%"></div>
+            <div class="bg-emerald-400 h-3 rounded-full" style="width: 75%"></div>
           </div>
         </div>
         <div class="mb-2 text-left">
           <p class="text-sm text-gray-300 mb-1">XP</p>
           <div class="w-full bg-gray-600 rounded-full h-3">
-            <div class="bg-emerald-400 h-3 rounded-full" style="width: 20%"></div>
+            <div class="bg-emerald-400 h-3 rounded-full" style="width: 85%"></div>
           </div>
         </div>
       </div>
@@ -377,7 +395,7 @@
   <div class="container mx-auto text-center">
     <h3 class="text-3xl font-bold mb-6 text-emerald-400">ติดต่อ</h3>
     <p class="text-gray-300 mb-4">💬 หากสนใจเข้าร่วม Unity Realms ติดต่อเราได้ที่ Discord</p>
-    <a href="https://discord.gg/4uw7aEZH" class="bg-emerald-500 hover:bg-emerald-600 text-white px-8 py-3 rounded-xl font-bold shadow-lg pixel-border">
+    <a href="https://discord.gg/Ethrhx7P" class="bg-emerald-500 hover:bg-emerald-600 text-white px-8 py-3 rounded-xl font-bold shadow-lg pixel-border">
       Join Discord
     </a>
   </div>
@@ -398,10 +416,3 @@
 
 </body>
 </html>
-
-
-
-
-
-
-
